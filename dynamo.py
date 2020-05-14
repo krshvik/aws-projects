@@ -1,12 +1,8 @@
 import boto3
 from datetime import datetime
-from pytz import timezone
 import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-fmt = "%Y-%m-%d %H:%M:%S %Z%z"
-zone = 'US/Central'
 
 
 dynamo = boto3.client('dynamodb',region_name='us-east-2',verify=False)
