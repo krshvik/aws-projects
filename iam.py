@@ -1,22 +1,14 @@
-# import boto3
-#
-# # e = boto3.resource('ec2',calling_format=boto3.connection.OrdinaryCallingFormat())
-# e = boto3.client('iam',use_ssl = False)
-#
-# u = e.list_users()
+import boto3
 from datetime import datetime
 from pytz import timezone
-
 import urllib3
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 fmt = "%Y-%m-%d %H:%M:%S %Z%z"
 zone = 'US/Central'
 
-now_time = datetime.now(timezone(zone))
-print(now_time.strftime(fmt))
 
-import boto3
 iam = boto3.client('iam',verify=False)
 
 print('USER List')
