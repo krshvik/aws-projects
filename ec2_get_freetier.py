@@ -10,5 +10,3 @@ ec2type = ec2.describe_instance_types()
 for i in ec2type['InstanceTypes']:
     if i['FreeTierEligible']:
         print('free tier:' , i['InstanceType'],i['ProcessorInfo'],i['NetworkInfo'])
-    else:
-        print(i['InstanceType'],i['ProcessorInfo'],i['NetworkInfo'])
