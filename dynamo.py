@@ -30,6 +30,8 @@ try:
 except Exception as e:
     print(e)
 
+dynamo.get_waiter('table_exists').wait(TableName='vikram-test')
+
 all_tables = dynamo.list_tables()['TableNames']
 
 for t in all_tables:
@@ -49,5 +51,10 @@ for t in all_tables:
 
     print(t,'read capacity ', rcpu,'write capacity ',wcpu,'size in bytes ', size,'item count ',cou)
 
+response = dynamo.delete_table(
+    TableName='vikram-test'
+)
 
-# print(response)
+dynamo.get_waiter('table_not_exists').wait(TableName='vikram-test')
+
+print(response)
