@@ -11,6 +11,18 @@ zone = 'US/Central'
 
 iam = boto3.client('iam',verify=False)
 
+try:
+    response = iam.create_user(UserName='vikram-test')
+    print(response)
+except Exception as e:
+    print(e)
+
+try:
+    response = iam.delete_user(UserName='vikram-test')
+    print(response)
+except Exception as e:
+    print(e)
+
 print('USER List')
 for user in iam.list_users()['Users']:
     u = user['CreateDate']
