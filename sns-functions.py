@@ -10,6 +10,7 @@ try:
     tarn = response['TopicArn']
     print('topic with arn :',tarn,' created')
     response = sns.delete_topic(TopicArn=tarn)
-    print(response)
+    if response['ResponseMetadata']['HTTPStatusCode'] == 200:
+        print('topic deleted successfuly : ARN is ',tarn)
 except Exception as e:
     print(e)
