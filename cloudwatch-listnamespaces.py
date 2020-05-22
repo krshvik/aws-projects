@@ -1,4 +1,5 @@
 ### list all available namespaces that has at least one metric
+### list all metrics and metric data for a given namespace, shown for dyanmodb below 
 
 import boto3
 import urllib3
@@ -14,7 +15,7 @@ try:
         nm = m['Namespace']
         all_namespaces[nm] = 1
     print(list(all_namespaces))
-
+    all_namespaces = ['AWS/DynamoDB']
     for n in all_namespaces:
         response = lam.list_metrics(Namespace=n)
         metrics = response['Metrics']
@@ -30,15 +31,15 @@ try:
                                 'Namespace': n,
                                 'MetricName': m['MetricName'],
                             },
-                            'Stat':'Average',
+                            'Stat':'Sum',
                             'Period': 480
                         },
                     },
                 ],
-                StartTime=datetime(2020, 5, 1),
+                StartTime=datetime(2020, 5, 13),
                 EndTime=datetime(2020,5,22),
                 ScanBy='TimestampDescending',
-                MaxDatapoints=1
+                MaxDatapoints=100
             )
             print(response)
 except Exception as e:
