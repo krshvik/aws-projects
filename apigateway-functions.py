@@ -1,5 +1,5 @@
 ### get all api names, along with stages and deployments
-### get all available api keys, along with usage plans that are linked to specific apis 
+### get all available api keys, along with usage plans that are linked to specific apis
 
 import boto3
 import urllib3
