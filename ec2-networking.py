@@ -1,5 +1,5 @@
 ### print network acl, subnet, vpc and security group
-### print all internet gateways and route tables 
+### print all internet gateways and route tables
 import boto3
 import urllib3
 import json
