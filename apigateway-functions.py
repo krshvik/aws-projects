@@ -1,5 +1,5 @@
 ### get all api names, along with stages and deployments
-### get all available api keys, along with usage plans that are linked to specific apis
+### get all available api keys/values, along with usage plans that are linked to specific apis
 
 import boto3
 import urllib3
@@ -41,5 +41,7 @@ for k in keys:
         for apis in p['apiStages']:
             print("usage plan :" ,pname,"linked to stage",apis['stage'],"of api with name:",api_dict[apis['apiId']])
     # print(response)
-    all_key[id] = 1
-print("all api keys available:",list(all_key))
+    key = api.get_api_key(apiKey=id,includeValue=True)
+    # print(key)
+    all_key[id] = key['value']
+print("all api keys (with value) :",all_key)
